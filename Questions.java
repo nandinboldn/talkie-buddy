@@ -1,4 +1,4 @@
- import java.util.Scanner;
+import java.util.Scanner;
 
 public class Questions {
 	//variables
@@ -47,7 +47,7 @@ public class Questions {
 		//Initial values for common phrases and words used by bot to check statements
 		//(like different ways of saying product name, it's not not working etc etc)
 		productName = answer.toLowerCase().contains("product") || answer.toLowerCase().contains("it") || answer.toLowerCase().contains("computer") || answer.toLowerCase().contains("laptop") || answer.toLowerCase().contains("device");
-		notWorking = answer.toLowerCase().contains("not working") || answer.toLowerCase().contains("isn't working" ) || answer.toLowerCase().contains("isnt working") || answer.toLowerCase().contains("issues");
+		notWorking = answer.toLowerCase().contains("not working") || answer.toLowerCase().contains("isn't working" ) || answer.toLowerCase().contains("isnt working") || answer.toLowerCase().contains("issue") || answer.toLowerCase().contains("issues");
 		forceRestart = answer.toLowerCase().contains("force") && answer.toLowerCase().contains("restart");
 		itWorked = answer.toLowerCase().contains("it worked") || answer.toLowerCase().contains("it works");
 		didntWork = (answer.toLowerCase().contains("didn't") || answer.toLowerCase().contains("didnt")) && answer.toLowerCase().contains("work");
@@ -69,10 +69,11 @@ public class Questions {
 		ok = answer.toLowerCase().contains("ok");
 		what = answer.toLowerCase().contains("what");
 		crash = answer.toLowerCase().contains("crash") || answer.toLowerCase().contains("die");
-		program = answer.toLowerCase().contains("program");
+		program = answer.toLowerCase().contains("program")|| answer.toLowerCase().contains("software")|| answer.toLowerCase().contains("program");
 		ido = answer.toLowerCase().contains("i do");
-		returns = answer.toLowerCase().contains("return");
+		returns = answer.toLowerCase().contains("return")|| answer.toLowerCase().contains("give back");
 		exchange = answer.toLowerCase().contains("exchange");
+
 	}
 	
 	public static void main(String[] args) {

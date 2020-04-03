@@ -75,8 +75,8 @@ public class ComplaintsClass {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		
-//		answer = input.nextLine();
-//		answer.toLowerCase().contains("")		
+		answer = input.nextLine();
+		// answer.toLowerCase().contains("");	
 		
 		while(continuing) {
 			phrases();
