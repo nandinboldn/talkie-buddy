@@ -54,8 +54,80 @@ public class BotTopic {
 					System.exit(0);
 				}
 			} 
+
+
 			//the new topic added to repertoire --- Product Review and Product Rating
-			else if(answer.toLowerCase().contains("write") || answer.toLowerCase().contains("review") || ( answer.toLowerCase().contains("about") && answer.toLowerCase().contains("product")) || answer.toLowerCase().contains("revision") || answer.toLowerCase().contains("rate") && !answer.toLowerCase().contains("read")){
+
+
+			//To read reviews/ratings about the products
+			else if ( !answer.toLowerCase().contains("write") && (answer.toLowerCase().contains("see") || answer.toLowerCase().contains("read") || answer.toLowerCase().contains("know") || answer.toLowerCase().contains("like to")) && (answer.toLowerCase().contains("about")	|| answer.toLowerCase().contains("review") || answer.toLowerCase().contains("rate") || answer.toLowerCase().contains("rating"))	){
+				System.out.println("Which product would you like to revise?");	
+				String p_name = input.nextLine();
+					try {
+						Scanner scanner_review = new Scanner(new File("review.txt"));
+						Scanner scanner_rate = new Scanner(new File("rating.txt"));
+						StringBuilder reviews = new StringBuilder();
+						StringBuilder ratings = new StringBuilder();
+						int count_reviews = 0;
+						int count_rates = 0;
+
+						while (scanner_review.hasNextLine()) {
+							String line = scanner_review.nextLine();
+							String lines[] = line.split("~~~");
+							
+							if(lines[0].equalsIgnoreCase(p_name)) {
+								reviews.append(lines[1] + "\n");
+								count_reviews++;
+							}
+						
+						}
+
+						while (scanner_rate.hasNextLine()) {
+							String line = scanner_rate.nextLine();
+							String lines[] = line.split("~~~");
+							if(lines[0].equalsIgnoreCase(p_name)) {
+								ratings.append(lines[1] + "\n");
+								count_rates++;
+							}
+						}
+
+						System.out.println("We found " + count_rates + " rating(s) "  + count_reviews + " review(s) for (" + p_name + ")");
+						System.out.println("Would you like to see any of the reviews and the ratings?");
+						//give user the option to choose whether to display both reviews & ratings
+						answer = input.nextLine();
+
+						//if the user refuses, terminate the program
+						if ( answer.toLowerCase().contains("never mind") || answer.toLowerCase().contains("nothing") || answer.toLowerCase().contains("no") || answer.toLowerCase().contains("nope") || answer.toLowerCase().contains("not at all")){
+							System.out.println("Alright. Have a Good Day");
+							System.exit(0);
+						}
+						//display the ratings of the product
+						else if( !answer.toLowerCase().contains("review") && answer.toLowerCase().contains("only") && ( answer.toLowerCase().contains("rate") || answer.toLowerCase().contains("rating")) ){
+							System.out.println("Here are the ratings for the product (" + p_name + ")" + "\n" + ratings);
+							answer = input.nextLine();
+						}
+						//display the reviews of the product
+						else if(!answer.toLowerCase().contains("rating") && answer.toLowerCase().contains("only") && answer.toLowerCase().contains("review") || answer.toLowerCase().contains("revision") || answer.toLowerCase().contains("revise")){
+							System.out.println("Here are the reviews for the product (" + p_name +")" +"\n" + reviews);
+							answer = input.nextLine();
+						}
+						//in other cases, display both reviews and ratings 
+						else{
+							System.out.println("Here are both reviews and ratings for the product ("+ p_name +")" +"\nReviews:\n" + reviews +"\nRatings:\n" + ratings);
+							answer = input.nextLine();
+						}
+
+				 	} catch (Exception e) {
+
+						System.out.println("Can't find the the data file.");
+						e.printStackTrace();
+						System.exit(1);
+					}
+
+			}
+
+			//To write/save the review or rating for a product
+			else if(answer.toLowerCase().contains("write") || answer.toLowerCase().contains("review") || ( answer.toLowerCase().contains("about") && answer.toLowerCase().contains("product") && !answer.toLowerCase().contains("read")) || answer.toLowerCase().contains("revision") || answer.toLowerCase().contains("rate")){
 				//ask if user wants to write a review or to give a rate on a product
 				System.out.println("Did you want to write a review about product? or to rate a product?");
 				answer = input.nextLine();
@@ -77,7 +149,9 @@ public class BotTopic {
 								review_file.write(review_product +"~~~"+ review + "\n");
 								review_file.close();
 								System.out.println("Your review is saved! Thank you!");
+								
 								//break the loop
+								answer = input.nextLine();
 								loop_product = false;
 							}catch (IOException e) {
 								System.out.println("An error occurred.");
@@ -121,7 +195,8 @@ public class BotTopic {
 								//save the ratings as product_name~~~product_rating format
 								rate_file.write(rate_product +"~~~"+ rate_num + "\n");
 								rate_file.close();
-								System.out.println(rate_product + " - " + rate_num + " Your product rating is saved!");
+								System.out.println(rate_product + " - " + rate_num + " Your product rating is saved! Thank you!");
+								answer = input.nextLine();
 								rate_loop = false;
 							}catch (IOException e) {
 								System.out.println("An error occurred.");
@@ -141,43 +216,13 @@ public class BotTopic {
 				}
 
 			}
-			//To read reviews/ratings about the products
-			else if ((answer.toLowerCase().contains("see") || answer.toLowerCase().contains("read") || answer.toLowerCase().contains("know") || answer.toLowerCase().contains("like to")) && (answer.toLowerCase().contains("about")	|| answer.toLowerCase().contains("review") || answer.toLowerCase().contains("rate") || answer.toLowerCase().contains("rating"))	){
-				System.out.println("Which product would you like to reevaluate?");	
-				String p_name = input.nextLine();
-				System.out.println("Okay, would you like to see the review or rating of this product ?  Both written by past customers");
-				String answer = input.nextLine();
-				if(answer.toLowerCase().contains("review") || answer.toLowerCase().contains("revision") || answer.toLowerCase().contains("revise")){
-					try {
-						Scanner scanner = new Scanner(new File("review.txt"));
-						while (scanner.hasNextLine()) {
-							String line = scanner.nextLine();
-							String lines[] = line.split("~~~");
-							if(lines[0].equalsIgnoreCase(p_name)) System.out.println("We found a review for (" + p_name + "):\n" + lines[1]);
-						}
-					} catch (Exception e) {
-						System.out.println("Can't find the the data file.");
-						e.printStackTrace();
-						System.exit(1);
-					}
-				}
-				else if(answer.toLowerCase().contains("rate") || answer.toLowerCase().contains("rating")){
-					try {
-						Scanner scanner = new Scanner(new File("rating.txt"));
-						while (scanner.hasNextLine()) {
-							String line = scanner.nextLine();
-							String lines[] = line.split("~~~");
-							if(lines[0].equalsIgnoreCase(p_name)) System.out.println("We found a rating for (" + p_name + "):\n" + lines[1]);
-						}
-					} catch (Exception e) {
-						System.out.println("Can't find the the data file.");
-						e.printStackTrace();
-						System.exit(1);
-					}
-				}
-			}
-			
+
+			//the section for handling the random input from the user with at least 5 reasonable answers
 			else {
+				boolean general_question =answer.contains(s) ;
+				boolean wh_question = ;
+				if ()
+				System.out.println("How may I help you?");
 				//ask user if it's a question or complaint
 				System.out.println("Is that a problem you want solved or are you writing a complaint?");
 				answer = input.nextLine();
