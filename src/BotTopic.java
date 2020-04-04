@@ -217,20 +217,21 @@ public class BotTopic {
 
 			}
 
-			//the section for handling the random input from the user with at least 5 reasonable answers
+			//the section for handling the random input from the user with at least 5 reasonable answers using RandomQuestions class
 			else {
-				boolean general_question =answer.contains(s) ;
-				boolean wh_question = ;
-				if ()
-				System.out.println("How may I help you?");
-				//ask user if it's a question or complaint
-				System.out.println("Is that a problem you want solved or are you writing a complaint?");
+				//get the question from the input and generate an answer
+				RandomQuestions question = new RandomQuestions(answer);
+				System.out.println(question.close_answer);
 				answer = input.nextLine();
-				//if they answer "yes" reinforce if it's a question or complaint
-				if(answer.toLowerCase().contains("yes")) {
-					System.out.println("But which one? a complaint or a question?");
-					answer = input.nextLine();
-				}
+
+				// //ask user if it's a question or complaint
+				// System.out.println("Is that a problem you want solved or are you writing a complaint?");
+				// answer = input.nextLine();
+				// //if they answer "yes" reinforce if it's a question or complaint
+				// if(answer.toLowerCase().contains("yes")) {
+				// 	System.out.println("But which one? a complaint or a question?");
+				// 	answer = input.nextLine();
+				// }
 			}
 		}
 	
