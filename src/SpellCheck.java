@@ -6,7 +6,7 @@ public class SpellCheck {
 
     private Dictionary dict;
     //using the text file dictionary words.txt expecting it's located one directory level up
-    final static String filePath = "../words.txt";
+    final static String filePath = "words.txt";
     final static char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
     SpellCheck() {
