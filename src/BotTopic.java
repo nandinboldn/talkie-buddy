@@ -142,7 +142,7 @@ public class BotTopic {
 
 			}
 			//To read reviews/ratings about the products
-			else if ((answer.toLowerCase().contains("see") ||answer.toLowerCase().contains("read") || answer.toLowerCase().contains("know") || answer.toLowerCase().contains("like to")) && (answer.toLowerCase().contains("about")	|| answer.toLowerCase().contains("review") || answer.toLowerCase().contains("rate") || answer.toLowerCase().contains("rating"))	){
+			else if ((answer.toLowerCase().contains("see") || answer.toLowerCase().contains("read") || answer.toLowerCase().contains("know") || answer.toLowerCase().contains("like to")) && (answer.toLowerCase().contains("about")	|| answer.toLowerCase().contains("review") || answer.toLowerCase().contains("rate") || answer.toLowerCase().contains("rating"))	){
 				System.out.println("Which product would you like to reevaluate?");	
 				String p_name = input.nextLine();
 				System.out.println("Okay, would you like to see the review or rating of this product ?  Both written by past customers");
