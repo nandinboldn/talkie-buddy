@@ -1,4 +1,3 @@
-package src;
 import java.io.*;
 import java.util.*;
 
@@ -10,13 +9,20 @@ public class RandomQuestions {
     //the random questions with their appropriate answers 
     //general question asking about the chatbot and the mood
     String general1  = randomQA.put("How are you?","I'm good. Thank you!");
-    String general2  = randomQA.put("What's up?","Nothing much. Thank you!");
+    String general2  = randomQA.put("What's up?","Nothing much. How are you?");
+    String general21  = randomQA.put("What is up?","Nothing much. Do you have any question for me?");
     String general3  = randomQA.put("How was your day?","My day was good,Thank you!\tHow was yours :) ?");
-    String general4  = randomQA.put("Good","Okay. Thank you!");
+    String general4  = randomQA.put("Oka","Do you have any question for me ? :)");
     String general5  = randomQA.put("What are you?","I'm a chatbot. Thank you!");
     String general6  = randomQA.put("who are you?","I'm a chatbot, and my name is Talkie-Buddy. Thank you!");
     String general7  = randomQA.put("How old are you?","I'm only few months old. and you ?");
-
+    String general8  = randomQA.put("Hey","Hey there. Did you have any questions for me ?");
+    String general9  = randomQA.put("Hi","Hey there. Did you have any questions for me ?");
+    String general10  = randomQA.put("I am good ","Okay. Did you have any questions for me ?");
+    String general11  = randomQA.put("I'm good ","Okay. Did you have any questions for me ?");
+    String general12  = randomQA.put("Good","Okay.Did you have any questions for me ?");
+    
+    
     //questions relatod to contact information of the company/store
     String contact1  = randomQA.put("Number to contact to store","Here are the number of company: 1-600-600-6000 , 1-800-900-1000");
     String contact2  = randomQA.put("Address of the store?","Here is the address of our local branch: 2424 Kobe St. , Laker way, LA");

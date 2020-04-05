@@ -1,4 +1,4 @@
-package src;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,15 +6,20 @@ public class SpellCheck {
 
     private Dictionary dict;
     //using the text file dictionary words.txt expecting it's located one directory level up
-    final static String filePath = "words.txt";
+    final static String filePath = "src/words.txt";
     final static char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-
+    
+    
     SpellCheck() {
         dict = new Dictionary();
         dict.build(filePath);
 
     }
-
+    
+    static void terminalwrite(String text) {
+		Terminal.chatlog.append("\n" +text);
+	}
+    
     boolean run(String input_sentence) {
         Scanner scan = new Scanner(input_sentence);
         boolean done = true;
@@ -25,12 +30,11 @@ public class SpellCheck {
             if(word.equals("")){
                 return false;
             }
-            //if the word in a sentence is not in a dictionary ~~ words.txt
+            //if the word in a sentence is in a dictionary ~~ words.txt
             if(dict.contains(word)){
                 done = done && true;
             }else{
-                System.out.println(word + " is not spelled correctly, ");
-                System.out.println(printSuggestions(word));
+                terminalwrite(word + " is not spelled correctly, " + printSuggestions(word));
                 done = done && false;
             }
 
