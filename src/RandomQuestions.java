@@ -46,7 +46,7 @@ public class RandomQuestions {
     
     public String returnAnswer(String answer){
         //In case we don't get any answer reasonable to the question
-        String close_answer = "I couldn't understand what you said! Sorry :(";
+        String close_answer = "";
         for (String answer_key: randomQA.keySet()){
             double result = returnSimilarity(answer, answer_key);
             //if the user's input is more than 65% similar to the keys stored

@@ -210,14 +210,22 @@ public class BotTopic {
 			else {
 				//get the question from the input and generate an answer
 				RandomQuestions question = new RandomQuestions(answer);
-				terminalwrite(question.close_answer);
+				//if the RandomQuestions class doesn't handle the question 
+				if(question.close_answer.equals("")) {
+					//ask user if it's a question or complaint
+					terminalwrite("Is that a problem you want solved or are you writing a complaint?");
+					//if they answer "yes" reinforce if it's a question or complaint
+					if(answer.toLowerCase().contains("yes")) {
+						terminalwrite("But which one? a complaint or a question?");
+					}
+				}
+				//otherwise,display the reasonable answer for the user input
+				else {
+					terminalwrite(question.close_answer);
+				}
+				
 
-//				//ask user if it's a question or complaint
-//				terminalwrite("Is that a problem you want solved or are you writing a complaint?");
-//				//if they answer "yes" reinforce if it's a question or complaint
-//				if(answer.toLowerCase().contains("yes")) {
-//					terminalwrite("But which one? a complaint or a question?");
-//				}
+
 
 			}
 			
