@@ -50,12 +50,16 @@ public class SpellCheck {
             return "and I have no idea what word you could mean :( \n";
         }
         //if there's any suggestion(s)
-        sb.append("perhaps you meant:\n");
+        sb.append("perhaps you meant ");
         int i = 1;
         for (String s : print) {
-            sb.append(i + "." + s + " ");
+            sb.append(s);
+            if(i < print.size()) {
+            	sb.append(", or ");
+            }
             i++;
         }
+    	sb.append("?");
         return sb.toString();
     }
 
