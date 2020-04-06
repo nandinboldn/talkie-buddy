@@ -34,6 +34,7 @@ public class SpellCheck {
             if(dict.contains(word)){
                 done = done && true;
             }else{
+		terminalwrite(input_sentence);
                 terminalwrite(word + " is not spelled correctly, " + printSuggestions(word));
                 done = done && false;
             }
